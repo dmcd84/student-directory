@@ -5,15 +5,15 @@ def input_students
   students = []
   puts "Please enter student name"
   # get the first name
-  name = gets.chomp
+  name = gets.capitalize.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
-    puts "Plesae indicate cohort for student"
-    cohort = gets.chomp
+    puts "Please indicate cohort for student"
+    cohort = gets.capitalize.chomp
     puts "Please enter main hobby of student"
-    hobby = gets.chomp
+    hobby = gets.capitalize.chomp
     puts "Please enter country of birth for student"
-    country = gets.chomp
+    country = gets.capitalize.chomp
     puts "Please enter heigh of student in cm"
     height = gets.chomp
     # add the student hash to the array
@@ -34,9 +34,13 @@ def print_header
 end
 
 def print(students)
-  x = 1
-  while x <= students.count do
-    puts "#{x} #{students[x-1][:name]} #{students[x-1][:cohort]} #{students[x-1][:hobbies]} #{students[x-1][:country_of_birth]} #{students[x-1][:height]}cm"
+  count = 1
+  spacing = 50
+  while count <= students.count do
+    puts "#{count} #{students[count-1][:name]} #{students[count-1][:cohort]}".center(spacing)
+    puts "#{students[count-1][:hobbies]}".center(spacing+25)
+    puts "#{students[count-1][:country_of_birth]}".center(spacing+30)
+    puts "#{students[count-1][:height]}cm".center(spacing+35)
     x += 1
   end
   puts "-- end of list --"
