@@ -10,19 +10,19 @@ def input_students
   # while the name is not empty, repeat this code
   while !name.empty? do
     temp = []
-    puts "Please indicate cohort for student"
-    cohort = gets.capitalize.chomp
+    puts "Please indicate cohort for student using first three characters of month."
+    cohort = gets.downcase.chomp
     cohort = "UNKNOWN" if cohort.empty?
     puts "Please enter main hobby of student"
-    hobby = gets.capitalize.chomp
+    hobby = gets.downcase.chomp
     hobby = "UNKNOWN" if hobby.empty?
     puts "Please enter country of birth for student"
-    country = gets.capitalize.chomp
+    country = gets.downcase.chomp
     country = "UNKNOWN" if country.empty?
     puts "Please enter heigh of student in cm"
     height = gets.chomp
     height = "UNKNOWN" if height.empty?
-    temp << {name: name, cohort: cohort.to_sym, hobbies: hobby, country_of_birth: country, height: height}
+    temp << {name: name, cohort: cohort, hobbies: hobby, country_of_birth: country, height: height}
     p temp
     puts "Please check if details are correct. If so, press 'y' if not press 'n'"
     check = gets.chomp
@@ -38,6 +38,18 @@ def input_students
   end
   # return the array of students
   return students
+end
+
+def print_by_cohort(students)
+  cohort_sort = []
+  puts "Which cohort would you like to see? (Please type only first three characters.)"
+  cohort_to_find = gets.downcase.chomp
+  students.select do |student|
+    if student[:cohort] == cohort_to_find
+      cohort_sort << student
+    end
+  end
+  return cohort_sort
 end
 
 def print_header
@@ -64,5 +76,6 @@ end
 # nothing happens until we call the methods
 students = input_students
 print_header
+students = print_by_cohort(students)
 print(students)
 print_footer(students)
