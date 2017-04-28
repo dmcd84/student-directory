@@ -17,6 +17,16 @@ def input_students
   students
 end
 
+def students_by_first_letter(students)
+  first_letter_filter = []
+  students.each do |student|
+    if student[:name][0] == "D" || student[:name][0] == "d"
+      first_letter_filter << student
+    end
+  end
+  first_letter_filter
+end
+
 def print_header
   puts "The students of Villains Academy"
   puts "-------------"
@@ -33,6 +43,8 @@ def print_footer(students)
 end
 # nothing happens until we call the methods
 students = input_students
+students_by_first_letter(students)
+students = students_by_first_letter(students)
 print_header
 print(students)
 print_footer(students)
