@@ -11,21 +11,21 @@ def input_students
   while !name.empty? do
     temp = []
     puts "Please indicate cohort for student using first three characters of month."
-    cohort = gets.downcase.chomp
+    cohort = gets.downcase.strip
     cohort = "UNKNOWN" if cohort.empty?
     puts "Please enter main hobby of student"
-    hobby = gets.downcase.chomp
+    hobby = gets.downcase.strip
     hobby = "UNKNOWN" if hobby.empty?
     puts "Please enter country of birth for student"
-    country = gets.downcase.chomp
+    country = gets.downcase.strip
     country = "UNKNOWN" if country.empty?
     puts "Please enter heigh of student in cm"
-    height = gets.chomp
+    height = gets.strip
     height = "UNKNOWN" if height.empty?
     temp << {name: name, cohort: cohort, hobbies: hobby, country_of_birth: country, height: height}
     p temp
     puts "Please check if details are correct. If so, press 'y' if not press 'n'"
-    check = gets.chomp
+    check = gets.strip
       if check == "y"
     # add the student hash to the array
       students << {name: name, cohort: cohort, hobbies: hobby, country_of_birth: country, height: height}
@@ -34,7 +34,7 @@ def input_students
     puts "Now we have #{students.count} students"
     puts "Please enter student name"
     # get another name from the user
-    name = gets.chomp
+    name = gets.strip
   end
   # return the array of students
   return students
@@ -43,7 +43,7 @@ end
 def print_by_cohort(students)
   cohort_sort = []
   puts "Which cohort would you like to see? (Please type only first three characters.)"
-  cohort_to_find = gets.downcase.chomp
+  cohort_to_find = gets.downcase.strip
   students.select do |student|
     if student[:cohort] == cohort_to_find
       cohort_sort << student
