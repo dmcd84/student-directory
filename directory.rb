@@ -43,14 +43,19 @@ end
 def process(selection)
   case selection
   when "1"
+    puts "Success! Option 1 selected."
     input_students
   when "2"
+    puts "Success! Option 2 selected."
     show_students
   when "3"
+    puts "Success! Option 3 selected."
     save_students
   when "4"
+    puts "Success! Option 4 selected."
     load_students
   when "9"
+    puts "Success! Option 9 selected - exiting program. Goodbye. "
     exit # this will cause the program to terminate
   else
     puts "I don't know what you meant, try again"
